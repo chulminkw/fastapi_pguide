@@ -1,0 +1,54 @@
+{% extends "/layout/main_layout.html" %}
+    {% block content %}
+    <!-- Blog Post Content -->
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="mb-4">
+                    <h1 class="fw-bold">{{ blog.title }}</h1>
+                    <p class="text-muted">Posted on {{ blog.modified_dt }} by {{ blog.author }}</p>
+                    <img src="{{ blog.image_loc }}" class="img-fluid w-100 mb-4" style="height: 500px;" alt="Blog Image">
+                    <p>{{ blog.content | safe }}</p>
+                </div>
+
+                <!-- Action Buttons -->
+                <a href="/blogs" class="btn btn-secondary">홈으로 돌아가기</a>
+                <a href="/blogs/modify/{{ blog.id }}" class="btn btn-primary">블로그 수정</a>
+                <button class="btn btn-danger" onclick="confirmDelete()">블로그 삭제</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Button 클릭 시 Check -->
+    <script>
+        // 삭제전 alert 메시지 첵크
+        async function confirmDelete() {
+            if (confirm('해당 블로그를 정말 삭제하시겠습니까? 삭제된 블로그는 복구되지 않습니다.')) 
+            {
+                // 삭제를 위한 endpoint 주소
+                const url = "/blogs/delete/{{ blog.id }}";
+
+                // 삭제 endpoint로 delete 요청.
+                try {
+                    const response = await fetch(url, {
+                        method: 'DELETE', // Use 'DELETE' method for deletion
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        
+                    });
+                    if (response.ok) {
+                        const result = await response.json();
+                        window.location.href = "/blogs"; // Notify the user about the successful deletion
+                    } else {
+                        const errorData = await response.json();
+                        alert(`Error: ${errorData.detail}`);
+                    }
+               } catch (error) {
+                    console.error('Error during the fetch operation:', error);
+                    alert('An error occurred. Please try again.');
+                }
+            }
+        }
+    </script>
+    {% endblock %}
