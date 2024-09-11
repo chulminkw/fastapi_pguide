@@ -1,0 +1,13 @@
+<html>
+<head>
+    <title>Item Details</title>
+</head>
+<body>
+    {% if gubun == "admin" %}
+    <p>이것은 어드민용 item입니다.</p>
+    {% else %}
+    <p> 이것은 일반용 item 입니다. </p>
+    {% endif %}
+    <h3>{{item}}</h3>
+</body>
+</html>
