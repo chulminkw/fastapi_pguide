@@ -1,0 +1,29 @@
+{% extends "/layout/main_layout.html" %}
+    {% block content %}
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <!-- Blog Posts -->
+            <div class="col-lg-8">
+                {% for blog in all_blogs %}
+                <div class="mb-4 border-bottom ">
+                    <h2 class="fw-bold">{{ blog.title }}</h2>
+                    <p class="text-muted">Posted on {{ blog.modified_dt }} by {{ blog.author }}</p>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <p class="mt-3">{{ blog.content | safe }}</p>
+                        </div>
+                        <div class="col-lg-4">
+                            <img src="{{ blog.image_loc }}" class="img-fluid" alt="Blog Image">
+                        </div>
+                    </div>
+                    <a href="/blogs/show/{{blog.id}}" class="btn btn-primary mb-4">Read More</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- End of Main Content-->
+    {% endblock %}
+   
+
