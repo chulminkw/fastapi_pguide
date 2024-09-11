@@ -1,0 +1,39 @@
+{% extends "/layout/main_layout.html" %}
+    {% block content %}
+
+    <!-- Edit Post Form -->
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <h1 class="fw-bold mb-4">블로그 신규 만들기</h1>
+                <form action="/blogs/new" method="POST" enctype="multipart/form-data">
+                    <!-- Title Input -->
+                    <div class="mb-3">
+                        <label for="title" class="form-label">제목</label>
+                        <input type="text" class="form-control" id="title" name="title" />
+                    </div>
+                    <!-- <div class="mb-3">
+                        <label for="author" class="form-label">지은이</label>
+                        <input type="text" class="form-control" id="author" name="author" />
+                    </div> -->
+                    <!-- Content Textarea -->
+                    <div class="mb-3">
+                        <label for="content" class="form-label">내용</label>
+                        <textarea class="form-control" id="content" name="content" rows="10"></textarea>
+                    </div>
+
+                    <!-- Image Input -->
+                    <div class="mb-3">
+                        <label for="imagefile" class="form-label">Post Image</label>
+                        <input type="file" class="form-control" id="imagefile" name="imagefile" />
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary">신규 블로그 생성</button>
+                    <a href="/blogs" class="btn btn-secondary">취소</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    {% endblock %}
