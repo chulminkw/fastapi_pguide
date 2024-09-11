@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>블로그에 오신걸 환영합니다</title>
+</head>
+<body>
+    <h1>모든 블로그 리스트</h1>
+    <div><a href="/blogs/new">새로운 Blog 생성</a></div>
+    {% for blog in all_blogs %}
+        <div>
+            <h3><a href="/blogs/show/{{ blog.id }}">{{ blog.title }}</a></h3>
+            <p><small>Posted on {{ blog.modified_dt }} by {{ blog.author }} </small> </p>
+            <p> {{ blog.content }} </p>
+        </div>
+    {% endfor %}
+</body>
+</html>

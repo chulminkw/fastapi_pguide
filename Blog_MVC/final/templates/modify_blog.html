@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>블로그 수정</title>
+</head>
+<body>
+    <form action="/blogs/modify/{{ blog.id }}" method="POST">
+        <div style="margin-bottom: 20px">
+            <label for="title">제목:</label>
+            <input type="text" id="title" name="title" value="{{ blog.title }}" style="width: 20rem;">
+        </div>
+        <div style="margin-bottom: 20px">
+            <label for="author">작성자:</label>
+            <input type="text" id="author" name="author" value="{{ blog.author }}"style="width: 10rem;">
+        </div>
+        <div style="margin-bottom: 20px">
+            <label for="content">내용:</label>
+            <textarea name="content" rows="5" cols="50">{{ blog.content }}</textarea>
+        </div>
+        <button>블로그 수정</button>
+    </form>
+    
+</body>
+</html>

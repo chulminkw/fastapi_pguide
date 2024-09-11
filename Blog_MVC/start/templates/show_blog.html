@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>블로그에 오신걸 환영합니다</title>
+</head>
+<body>
+    <div>
+        
+        <h1>{{ blog.title }} </h1>
+        <h5>Posted on {{ blog.modified_dt }} by {{ blog.author }} </small> </p>
+        <h3>{{ blog.content | safe }}</h3>
+    </div>
+    <div>
+        <a href="/blogs">Home으로 돌아가기</a>
+        <a href="/blogs/modify/{{ blog.id }}">수정하기</a>
+        <form action="/blogs/delete/{{ blog.id }}" method="POST">
+            <button>삭제하기</button>
+        </form>
+        
+    </div>
+</body>
+</html>
