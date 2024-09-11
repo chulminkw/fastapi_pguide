@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Blog JSON Response</title>
+</head>
+<body>
+    <h1>Blog Json Data</h1>
+    <pre id="jsonOutput"></pre> <!-- A <pre> tag to display JSON data -->
+    <script>
+        // The URL to which the request is sent
+        const url = 'http://localhost:8081/blogs/show_json/1';
+        // Options for the fetch request
+        //const options = ;
+
+        // Making the request
+        fetch(url, {
+        method: 'GET', // The HTTP method to use
+        })
+        .then(response => response.json()) // Parsing the response as JSON
+        .then(data => {
+            console.log('Success:', data); // Handling the response data
+            const outputElement = document.getElementById('jsonOutput');
+            // Set the text content of the <pre> element to the formatted JSON string
+            outputElement.textContent = JSON.stringify(data, null, 2);
+        })
+        .catch((error) => {
+            console.error('Error:', error); // Handling any errors
+        });
+
+    </script>
+</body>
+</html>
