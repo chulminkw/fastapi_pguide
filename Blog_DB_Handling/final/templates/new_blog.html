@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>새로운 블로그 생성</title>
+</head>
+<body>
+    <form action="/blogs/new" method="POST">
+        <div style="margin-bottom: 20px">
+            <label for="title">제목:</label>
+            <input type="text" id="title" name="title" style="width: 20rem;">
+        </div>
+        <div style="margin-bottom: 20px">
+            <label for="author">작성자:</label>
+            <input type="text" id="author" name="author" style="width: 10rem;">
+        </div>
+        <div style="margin-bottom: 20px">
+            <label for="content">내용:</label>
+            <textarea name="content" rows="5" cols="50"></textarea>
+        </div>
+        <button>신규 블로그 생성</button>
+    </form>
+    
+</body>
+</html>
