@@ -111,7 +111,7 @@ async def create_blog(conn: Connection, title:str, author: str,
         
     except SQLAlchemyError as e:
         print(e)
-        conn.rollback()
+        await conn.rollback()
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
                             detail="요청데이터가 제대로 전달되지 않았습니다.")
     
@@ -141,7 +141,7 @@ async def update_blog(conn: Connection,  id: int
         
     except SQLAlchemyError as e:
         print(e)
-        conn.rollback()
+        await conn.rollback()
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
                             detail="요청데이터가 제대로 전달되지 않았습니다. ")
     
@@ -169,12 +169,12 @@ async def delete_blog(conn: Connection, id: int, image_loc: str = None):
 
     except SQLAlchemyError as e:
         print(e)
-        conn.rollback()
+        await conn.rollback()
         raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
                             detail="요청하신 서비스가 잠시 내부적으로 문제가 발생하였습니다.")
     except Exception as e:
         print(e)
-        conn.rollback()
+        await conn.rollback()
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                             detail="알수없는 이유로 문제가 발생하였습니다. ")
 
