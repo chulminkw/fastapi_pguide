@@ -19,16 +19,3 @@ async def read_all_items():
     return {"message": "all items"}
 
 
-
-# Path parameter에 지정된 특정 값들만 원할 때는 아래와 같이 Enum Class로 Path유형을 지정. 
-# Enum class를 enum mixin으로 str을 확장하는 class로 만듬. 
-class ItemType(str, Enum):
-    small = "small"
-    medium = "medium"
-    large = "large"
-
-#item_type의 값으로 small/medium/large만 가능. 
-@app.get("/items/type/{item_type}")
-async def get_item_type(item_type: ItemType):
-    return {"message": f"item type is {item_type}"}
-
